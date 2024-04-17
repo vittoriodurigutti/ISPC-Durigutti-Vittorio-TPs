@@ -1,0 +1,130 @@
+BEGIN:VCALENDAR
+METHOD:REQUEST
+PRODID:Microsoft Exchange Server 2010
+VERSION:2.0
+BEGIN:VTIMEZONE
+TZID:Argentina Standard Time
+BEGIN:STANDARD
+DTSTART:16010101T000000
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0300
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010101T000000
+TZOFFSETFROM:-0300
+TZOFFSETTO:-0300
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+ORGANIZER;CN=Laura Saleh:mailto:lsaleh@claro.com.ar
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=vittodutti
+ @gmail.com:mailto:vittodutti@gmail.com
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=Diego Mart
+ inez:mailto:DSMARTINEZ@CLARO.COM.AR
+ATTENDEE;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=TRUE;CN=Marcelo Fu
+ ertes:mailto:MFUERTES@CLARO.COM.AR
+ATTACH:CID:image001.png@01DA8C2D.009F7C80
+DESCRIPTION:Vittorio\, buenas tardes.\n\nPara dar comienzo al proceso de se
+ lección\, te convocamos a una entrevista individual\, en la que participa
+ rán Diego Martinez y Marcelo Fuertes\, Supervisor y Jefe del área a la q
+ ue estás postulando.\n\nTe esperamos el día 17/4 a las 10.00hs\, en la s
+ ala de Teams.\n\nDicho encuentro tendrá una duración de 1 hora aprox.\n\
+ nAguardo tu confirmación.\n\nSaludos!\n\nMaría Laura Saleh\nAnalista de 
+ Selección y Desarrollo\nDirección de Recursos Humanos\nCel +54 351 30208
+ 89\n\n[cid:image001.png@01DA8C2D.009F7C80]\n\n\n\n\n______________________
+ __________________________________________________________\nMicrosoft Team
+ s ¿Necesita ayuda?<https://aka.ms/JoinTeamsMeeting?omkt=es-ES>\nUnirse a 
+ la reunión ahora<https://teams.microsoft.com/l/meetup-join/19%3ameeting_Z
+ jJhNTdlNzQtZDAyZC00ZWUzLTk4YTktYzUwMzE4YWQ1YWE5%40thread.v2/0?context=%7b%
+ 22Tid%22%3a%2205bfea77-f19c-471d-afa2-0c9093af8bdb%22%2c%22Oid%22%3a%224e9
+ 6c057-c95a-4ff8-b011-d4e19ca0ffff%22%7d>\nId. de reunión: 254 082 525 102
+ \nCódigo de acceso: 2Dkjr7\n________________________________\nMarcar por 
+ teléfono\n+54 11 5258-6841\,\,984876864#<tel:+541152586841\,\,984876864> 
+ Argentina\, Buenos Aires\nBuscar un número local<https://dialin.teams.mic
+ rosoft.com/54aadb31-537f-4f69-a1d6-94e9388598af?id=984876864>\nId. de conf
+ erencia telefónica: 984 876 864#\nPara los organizadores: Opciones de la 
+ reunión<https://teams.microsoft.com/meetingOptions/?organizerId=4e96c057-
+ c95a-4ff8-b011-d4e19ca0ffff&tenantId=05bfea77-f19c-471d-afa2-0c9093af8bdb&
+ threadId=19_meeting_ZjJhNTdlNzQtZDAyZC00ZWUzLTk4YTktYzUwMzE4YWQ1YWE5@threa
+ d.v2&messageId=0&language=es-ES> | Restablecer PIN de acceso telefónico<h
+ ttps://dialin.teams.microsoft.com/usp/pstnconferencing>\n_________________
+ _______________________________________________________________\n\nEste me
+ nsaje y todos los archivos adjuntos a el son para uso exclusivo del destin
+ atario y pueden contener informacion confidencial o propietaria\, cuya div
+ ulgacion es sancionada por ley. Si usted recibio este mensaje erroneamente
+ \, por favor notifiquenos respondiendo al remitente\, borre el mensaje ori
+ ginal y destruya las copias (impresas o grabadas en cualquier medio magnet
+ ico) que pueda haber realizado del mismo. Todas las opiniones contenidas e
+ n este mail son propias del autor del mensaje y no necesariamente coincide
+ n con las de Claro o alguna de las empresas accionistas. La publicacion\, 
+ uso\, copia e impresion total o parcial de este mensaje o documentos adjun
+ tos queda prohibida. This message and any attachments are for exclusive us
+ age of an addressee and may contain confidential or privileged information
+  whose disclosure is subject to penalty by law. If you are not the address
+ ee\, please notify the sender by return e-mail\, delete the original messa
+ ge and destroy any existing copy no matter if printed or recorded. Any opi
+ nions contained in this e-mail are those of the author of the message and 
+ do not necessarily coincide with those of Claro or its shareholders. No pa
+ rt of this message or attachments may be used or reproduced in any manner 
+ whatsoever. Este mensaje y todos los archivos adjuntos a el son para uso e
+ xclusivo del destinatario y pueden contener informacion confidencial o pro
+ pietaria\, cuya divulgacion es sancionada por ley. Si usted recibio este m
+ ensaje erroneamente\, por favor notifiquenos respondiendo al remitente\, b
+ orre el mensaje original y destruya las copias (impresas o grabadas en cua
+ lquier medio magnetico) que pueda haber realizado del mismo. Todas las opi
+ niones contenidas en este mail son propias del autor del mensaje y no nece
+ sariamente coinciden con las de Claro o alguna de las empresas accionistas
+ . La publicacion\, uso\, copia e impresion total o parcial de este mensaje
+  o documentos adjuntos queda prohibida. This message and any attachments a
+ re for exclusive usage of an addressee and may contain confidential or pri
+ vileged information whose disclosure is subject to penalty by law. If you 
+ are not the addressee\, please notify the sender by return e-mail\, delete
+  the original message and destroy any existing copy no matter if printed o
+ r recorded. Any opinions contained in this e-mail are those of the author 
+ of the message and do not necessarily coincide with those of Claro or its 
+ shareholders. No part of this message or attachments may be used or reprod
+ uced in any manner whatsoever.\n
+UID:040000008200E00074C5B7101A82E008000000001016DF7E2C8CDA01000000000000000
+ 0100000000176299A46DBCB4F9BFE3FC5EA034876
+SUMMARY;LANGUAGE=es-ES:Búsqueda: Operador NOC
+DTSTART;TZID=Argentina Standard Time:20240417T100000
+DTEND;TZID=Argentina Standard Time:20240417T110000
+CLASS:PUBLIC
+PRIORITY:5
+DTSTAMP:20240411T192627Z
+TRANSP:OPAQUE
+STATUS:CONFIRMED
+SEQUENCE:0
+LOCATION;LANGUAGE=es-ES:Reunión de Microsoft Teams
+X-MICROSOFT-CDO-APPT-SEQUENCE:0
+X-MICROSOFT-CDO-OWNERAPPTID:860571624
+X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE
+X-MICROSOFT-CDO-INTENDEDSTATUS:BUSY
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-MICROSOFT-CDO-IMPORTANCE:1
+X-MICROSOFT-CDO-INSTTYPE:0
+X-MICROSOFT-SKYPETEAMSMEETINGURL:https://teams.microsoft.com/l/meetup-join/
+ 19%3ameeting_ZjJhNTdlNzQtZDAyZC00ZWUzLTk4YTktYzUwMzE4YWQ1YWE5%40thread.v2/
+ 0?context=%7b%22Tid%22%3a%2205bfea77-f19c-471d-afa2-0c9093af8bdb%22%2c%22O
+ id%22%3a%224e96c057-c95a-4ff8-b011-d4e19ca0ffff%22%7d
+X-MICROSOFT-SCHEDULINGSERVICEUPDATEURL:https://api.scheduler.teams.microsof
+ t.com/teams/05bfea77-f19c-471d-afa2-0c9093af8bdb/4e96c057-c95a-4ff8-b011-d
+ 4e19ca0ffff/19_meeting_ZjJhNTdlNzQtZDAyZC00ZWUzLTk4YTktYzUwMzE4YWQ1YWE5@th
+ read.v2/0
+X-MICROSOFT-SKYPETEAMSPROPERTIES:{"cid":"19:meeting_ZjJhNTdlNzQtZDAyZC00ZWU
+ zLTk4YTktYzUwMzE4YWQ1YWE5@thread.v2"\,"private":true\,"type":0\,"mid":0\,"
+ rid":0\,"uid":null}
+X-MICROSOFT-DONOTFORWARDMEETING:FALSE
+X-MICROSOFT-DISALLOW-COUNTER:FALSE
+X-MICROSOFT-REQUESTEDATTENDANCEMODE:DEFAULT
+X-MICROSOFT-ISRESPONSEREQUESTED:TRUE
+X-MICROSOFT-LOCATIONS:[ { "DisplayName" : "Reunión de Microsoft Teams"\, "
+ LocationAnnotation" : ""\, "LocationSource" : 0\, "Unresolved" : false\, "
+ LocationUri" : "" } ]
+BEGIN:VALARM
+DESCRIPTION:REMINDER
+TRIGGER;RELATED=START:-PT15M
+ACTION:DISPLAY
+END:VALARM
+END:VEVENT
+END:VCALENDAR
