@@ -6,16 +6,16 @@ Consignas 2 y 3 se realizan en conjunto, colocando las capturas de cada simulaci
 
 -----------------------------------
 
-Consignas para esta semana
+## ** Consignas para esta semana **
 
-1- Investigación de las plataformas de desarrollo:
+1- ** Investigación de las plataformas de desarrollo: **
 * Documentar las características principales de Arduino
 (PlatformIO) y MicroPython (RT-Thread), destacando sus
 diferencias y aplicaciones en IoT.
 * Investigar sobre diferentes módulos shield disponibles para
 ESP32 y su aplicación en controladores IoT.
 
-2- Ejercicios de Implementación:
+2- ** Ejercicios de Implementación: **
 * Controlador de Entradas Digitales: Crear un sketch en
 Arduino y un script en MicroPython que lea el estado de un
 botón y encienda un LED cuando el botón esté presionado.
@@ -29,7 +29,7 @@ intervalos regulares.
 que controle la intensidad de un LED usando PWM basado
 en la lectura de un potenciómetro.
 
-3- Simulación en Wokwi:
+3- ** Simulación en Wokwi: **
 * Realizar simulaciones de cada uno de los controladores
 implementados para validar su funcionamiento antes de la
 carga en el hardware real.
