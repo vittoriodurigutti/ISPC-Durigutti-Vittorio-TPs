@@ -4,7 +4,7 @@ Se carga todo en formato PDR, con los bloques de codigo, y capturas de la respec
 
 Consignas 2 y 3 se realizan en conjunto, colocando las capturas de cada simulacion, contiunado con los bloques de codigo y la explicacion de cada uno.
 
------------------------------------
+-----------------------------------------------
 
 ## ** Consignas para esta semana **
 
@@ -33,3 +33,9 @@ en la lectura de un potenciómetro.
 * Realizar simulaciones de cada uno de los controladores
 implementados para validar su funcionamiento antes de la
 carga en el hardware real.
+
+-----------------------------------------------
+
+## Prototipos
+Dentro de la carpeta "3 Prototipo" se encuentran una serie de carpeta nombradas "Semana2ConsignaX" correspondiente a cada uno de los puntos a simular. Diseños desarrollados en la plataforma Wokwi, y luego trasladados a platformIO en VSCode para su ejecucion. 
+En el PDF de presentacion de cada punto, se encuentra en la carpeta "4 Presentacion" con capturas del diseño, una leve explicacion/recflexion del codigo, y los codigos realizados en MicroPython, y en formato e Arduino.

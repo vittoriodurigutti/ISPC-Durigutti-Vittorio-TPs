@@ -25,3 +25,4 @@ informe que incluya el diseño del circuito, la simulación en Proteus, los cál
 teóricos correspondientes, la comparación entre los valores teóricos y los resultados
 de la simulación, y las conclusiones obtenidas.
 El plazo de entrega es el correspondiente a la finalización de cada semana.
+
