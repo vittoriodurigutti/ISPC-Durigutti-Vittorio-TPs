@@ -33,21 +33,18 @@ El programa consta de 4 partes fundamentales.
 
 import mysql.connector
 from mysql.connector import Error
-import getpass  # Para solicitar la contraseña de forma segura
 import serial  # Para leer desde el puerto serial
 import time  # Para manejar tiempos de espera
 
 #---------------------------------------------------------------#
-# Funciones con las que interactuar con la conexion
-
 # Función para conectar a la base de datos
-def conectar(password):
+def conectar():
     try:
         connection = mysql.connector.connect(
-            host='localhost',       # Cambia esto si es necesario
-            database='GASDETECTOR', # Tu base de datos
-            user='root',            # Usuario de MySQL
-            password=password       # Contraseña ingresada por el usuario
+            host='localhost',       
+            database='GASDETECTOR',  
+            user='root',            
+            password='rootpassword'  # Cambia si es necesario
         )
         if connection.is_connected():
             print("Conexión exitosa a la base de datos")
@@ -56,15 +53,7 @@ def conectar(password):
         print(f"Error al conectar a la base de datos: {e}")
         return None
 
-# Función para cerrar la conexión
-def cerrar_conexion(connection):
-    if connection.is_connected():
-        connection.close()
-        print("Conexión cerrada")
-
 #---------------------------------------------------------------#
-# Funciones para insertar datos desde el monitor serial
-
 # Función para registrar la lectura del sensor en la base de datos
 def registrar_lectura(connection, id_sensor, nivel_gas):
     cursor = connection.cursor()
@@ -81,7 +70,6 @@ def registrar_lectura(connection, id_sensor, nivel_gas):
 
 #---------------------------------------------------------------#
 # Función para leer datos del puerto serial y registrar en la base de datos
-
 def leer_datos_serial(connection, puerto='/dev/ttyUSB0', baudrate=9600):
     try:
         ser = serial.Serial(puerto, baudrate, timeout=1)
@@ -108,12 +96,8 @@ def leer_datos_serial(connection, puerto='/dev/ttyUSB0', baudrate=9600):
 
 #---------------------------------------------------------------#
 # Menú interactivo
-
 def menu():
-    # Solicitar la contraseña al usuario de forma segura
-    password = getpass.getpass("Introduce la contraseña de la base de datos: ")
-    connection = conectar(password)
-
+    connection = conectar()
     if connection:
         while True:
             print("\n--- Menú de Opciones ---")
@@ -127,7 +111,8 @@ def menu():
                 baudrate = input("Introduce la velocidad de baudios (por defecto 9600): ") or 9600
                 leer_datos_serial(connection, puerto, int(baudrate))
             elif opcion == '2':
-                cerrar_conexion(connection)
+                connection.close()
+                print("Conexión cerrada. Saliendo...")
                 break
             else:
                 print("Opción no válida. Inténtalo de nuevo.")
