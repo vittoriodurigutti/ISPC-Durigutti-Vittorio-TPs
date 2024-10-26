@@ -5,7 +5,8 @@
 # EJECUCION DEL PROGRAMA: python menu_mysql.py | 
 # Lectura de los datos enviamos por el monitor serial 
 
-
+#---------------------------------------------------------------#
+# Liberias 
 
 import mysql.connector
 from mysql.connector import Error
@@ -14,6 +15,7 @@ import time  # Para manejar tiempos de espera
 
 #---------------------------------------------------------------#
 # Función para conectar a la base de datos
+# Conecta a una base de datos mysql de uso local, presentando los valores por defecto, y adaptada de la presentacion 2.
 def conectar():
     try:
         connection = mysql.connector.connect(
@@ -31,6 +33,12 @@ def conectar():
 
 #---------------------------------------------------------------#
 # Función para registrar la lectura del sensor en la base de datos
+
+ # Registra la lectura en la base de datos con la fecha y hora actual y el id del sensor y el nivel de gas detectado
+ # Si hay un error durante la ejecución de la consulta, muestra el error y cierra el cursor de la conexión
+ # Si no hay error, cierra el cursor de la conexión
+ # La función no retorna nada, pero efectúa las acciones de registro en la base de datos
+
 def registrar_lectura(connection, id_sensor, nivel_gas):
     cursor = connection.cursor()
     try:
@@ -46,6 +54,9 @@ def registrar_lectura(connection, id_sensor, nivel_gas):
 
 #---------------------------------------------------------------#
 # Función para leer datos del puerto serial y registrar en la base de datos
+# Capta los datos enviador por el dispositivo ESP32. Limpia el buffer luego de cada toma, por que sino entre 
+# todo en 0 luego de la primer lectura. 
+# Establece por defecto puerto COM5, que utilizo en la PC de prueba, pero permite cambiarlo
 def leer_datos_serial(connection, puerto='COM5', baudrate=9600):
     ser = None
     try:
@@ -79,6 +90,9 @@ def leer_datos_serial(connection, puerto='COM5', baudrate=9600):
 
 #---------------------------------------------------------------#
 # Menú interactivo
+# Permite elegir cuando dar inico a la lectura.
+# Da la posibilidad de ingresar otro puerto, y establece fijo el valor de velocidad de lectura.
+# Presenta mensajes de errores y desconexiones.  
 def menu():
     connection = conectar()
     if connection:
@@ -91,7 +105,7 @@ def menu():
 
             if opcion == '1':
                 puerto = input("Introduce el puerto serial (por defecto COM5): ") or 'COM5'
-                baudrate = input("Introduce la velocidad de baudios (por defecto 9600): ") or 9600
+                baudrate = 9600
                 leer_datos_serial(connection, puerto, int(baudrate))
             elif opcion == '2':
                 connection.close()
