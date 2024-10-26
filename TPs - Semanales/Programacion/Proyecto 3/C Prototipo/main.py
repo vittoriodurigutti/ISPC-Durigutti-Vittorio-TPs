@@ -2,34 +2,10 @@
 # Programacion - 
 # Proyecto 2
 
-# EJECUCION DEL PROGRAMA: python menu_mysql.py
+# EJECUCION DEL PROGRAMA: python menu_mysql.py | 
+# Lectura de los datos enviamos por el monitor serial 
 
 
-''' 
-El programa consta de 4 partes fundamentales.
-- (LINEA 16) Las librerias funcionales para poder conectar con la base de datos. 
--  La funcion conectar con la que establecemos la conecion con la base de datos en el entorno local
-    - (LINEA 24) Funciones con las que interactuar con la conexion 
-    - (LINEA 47) Función para cerrar la conexión
-- Las funciones con las que interacutar con la base de datos
-    - Funciones para agregar datos a la base de datos:
-        - (LINEA 70) Función para insertar un cliente en la base de datos
-        - (LINEA 97) Funcion para insertar dispositivo
-        - (LINEA 116) Funcion para insertar sensor_actuador
-    - Funciones para modificar datos a la base de datos:
-        - (LINEA 143) Función para modificar un cliente
-        - (LINEA 165) Función para cambiar el nombre de la habitación de un actuador
-    - Funciones para eliminar datos a la base de datos:
-        - (LINEA 188) Función para dar de baja un cliente (y eliminar todos sus dispositivos y sensores)
-    - Funciones para buscar datos a la base de datos:
-        - (LINEA 228) Función para buscar un cliente por DNI y mostrar sus datos
-        - (LINEA 246) Función para mostrar todos los controladores de un cliente
-        - (LINEA 268) Función para mostrar lecturas de un sensor específico
-        - (LINEA 289) Función para buscar por DNI del cliente, sensores, ubicación y habitación
-        - (LINEA 317) Función para recibir una alarma y mostrar información del sensor
-- (LINEA 366) Menu interactivo, mediante la terminal, con el que realizar las solicitudes, asi como la conexion.
-
-'''
 
 import mysql.connector
 from mysql.connector import Error
