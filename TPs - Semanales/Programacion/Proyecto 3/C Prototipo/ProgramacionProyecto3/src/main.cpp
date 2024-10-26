@@ -1,56 +1,89 @@
 #include <Arduino.h>
-#define MQ9_PIN 34         // Pin analógico para el sensor MQ-9
-#define BUZZER_PIN 25      // Pin digital para el buzzer (simulado con LED)
-#define EXTRACTOR_PIN 26   // Pin digital para el extractor (simulado con LED)
-#define INTERRUPT_PIN 27   // Pin para activar la interrupción (simulado con botón)
-#define GAS_THRESHOLD_MODERATE 120  
-#define GAS_THRESHOLD_CRITICAL 150
 
-bool alertaCritica = false;
+// Pines del encoder y otros dispositivos
+#define CLK_PIN 32          // Pin CLK del encoder
+#define DT_PIN 33           // Pin DT del encoder
+#define PULSADOR_PIN 27     // Pin del pulsador externo
+#define BUZZER_PIN 25       // Pin del buzzer
+#define EXTRACTOR_PIN 26    // Pin del LED verde (extractor)
 
-void IRAM_ATTR manejarAlertaCritica() {
-  alertaCritica = true;  // Cambiar estado cuando ocurra interrupción
-}
+// Variables globales
+int gasLevel = 0;            // Nivel de gas simulado
+int lastCLKState;            // Estado anterior del pin CLK
+unsigned long lastDebounceTime = 0;  // Tiempo del último pulso
+const unsigned long debounceDelay = 5;  // Tiempo de debounce (ms)
+bool alertaCritica = false;  // Estado de alerta crítica
+
+// **Prototipos de las funciones** (Declaraciones)
+void activarBuzzer(bool encendido, int delayMs);
+void desactivarAlarma();
+void IRAM_ATTR manejarAlertaCritica();
 
 void setup() {
-  pinMode(MQ9_PIN, INPUT);
+  // Configurar los pines del encoder como entradas
+  pinMode(CLK_PIN, INPUT);
+  pinMode(DT_PIN, INPUT);
+  pinMode(PULSADOR_PIN, INPUT_PULLUP);  // Pull-up interno para el pulsador
+
+  // Configurar el buzzer y LED extractor
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(EXTRACTOR_PIN, OUTPUT);
-  pinMode(INTERRUPT_PIN, INPUT_PULLUP);
-  
-  attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), manejarAlertaCritica, RISING);
 
-  Serial.begin(9600);  // Asegúrate de que coincida con el programa Python
-  delay(2000);  // Esperar un momento para que el puerto serial se estabilice
+  // Leer el estado inicial del pin CLK
+  lastCLKState = digitalRead(CLK_PIN);
+
+  // Iniciar comunicación serial
+  Serial.begin(9600);
+  Serial.println("ESP32 inicializado correctamente.");
+
+  // Adjuntar interrupción al pulsador
+  attachInterrupt(digitalPinToInterrupt(PULSADOR_PIN), manejarAlertaCritica, FALLING);
 }
 
 void loop() {
-  int gasLevel = analogRead(MQ9_PIN);  // Lee el nivel de gas del sensor
+  // Leer el estado actual del CLK
+  int currentCLKState = digitalRead(CLK_PIN);
 
-  // Mapea el nivel de gas a un rango más comprensible
-  gasLevel = map(gasLevel, 0, 4095, 0, 200);
+  // Detectar cambios de estado con debounce
+  if (currentCLKState != lastCLKState) {
+    if (millis() - lastDebounceTime > debounceDelay) {
+      // Verificar dirección del giro usando DT
+      if (digitalRead(DT_PIN) != currentCLKState) {
+        gasLevel++;  // Incrementar nivel de gas
+      } else {
+        gasLevel--;  // Decrementar nivel de gas
+      }
 
-  // Enviar los datos al puerto serial en el formato: ID_SENSOR:NIVEL_GAS
-  Serial.print("1:");  // ID del sensor (puede ser fijo)
-  Serial.println(gasLevel);  // Nivel de gas
+      // Limitar el rango del nivel de gas entre 0 y 20
+      gasLevel = constrain(gasLevel, 0, 30);
 
-  // Alerta crítica de gas detectada
-  if (alertaCritica || gasLevel >= GAS_THRESHOLD_CRITICAL) {
+      // Mostrar el nivel de gas en el puerto serial
+      Serial.print("1:");
+      Serial.println(gasLevel);
+      Serial.flush(); // intenta limpiar el buffer luego de cada envio.
+
+      // Actualizar el tiempo de debounce
+      lastDebounceTime = millis();
+    }
+  }
+
+  lastCLKState = currentCLKState;  // Actualizar estado del CLK
+  delay(10);
+
+  
+  // Verificar alertas de gas
+  if (alertaCritica || gasLevel >= 15) {  // Alerta crítica
     activarBuzzer(true, 100);  // Buzzer rápido
-    digitalWrite(EXTRACTOR_PIN, HIGH);  // Encender extractor
+    digitalWrite(EXTRACTOR_PIN, HIGH);  // Encender LED (extractor)
     alertaCritica = false;  // Reiniciar alerta crítica
-  } 
-  // Gas moderado
-  else if (gasLevel > GAS_THRESHOLD_MODERATE) {
-    activarBuzzer(true, 1000);  // Buzzer lento
-    digitalWrite(EXTRACTOR_PIN, HIGH);  // Encender extractor
-  } 
-  // Gas en nivel seguro
-  else {
+  } else if (gasLevel >= 10) {  // Nivel moderado
+    /*activarBuzzer(true, 1000);*/  // Buzzer lento
+    digitalWrite(EXTRACTOR_PIN, HIGH);  // Encender LED (extractor)
+  } else {  // Nivel seguro
     desactivarAlarma();
   }
 
-  delay(1000);  // Espera 1 segundo antes de la próxima lectura
+  delay(10);  // Pequeño retraso para estabilidad
 }
 
 void activarBuzzer(bool encendido, int delayMs) {
@@ -66,5 +99,10 @@ void activarBuzzer(bool encendido, int delayMs) {
 
 void desactivarAlarma() {
   digitalWrite(BUZZER_PIN, LOW);     // Apagar buzzer
-  digitalWrite(EXTRACTOR_PIN, LOW);  // Apagar extractor
+  digitalWrite(EXTRACTOR_PIN, LOW);  // Apagar LED
+} 
+
+// Función para manejar la interrupción del pulsador
+void IRAM_ATTR manejarAlertaCritica() {
+  alertaCritica = true;  // Activar alerta crítica
 }
